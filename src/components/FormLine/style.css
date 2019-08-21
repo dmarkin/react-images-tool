@@ -1,0 +1,33 @@
+.form-line {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  margin-top: 10px;
+}
+
+.form-line .form-label {
+  width: 40%;
+  box-sizing: border-box;
+  padding-left: 10px;
+  text-align: left;
+  float: left;
+}
+
+.form-line::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.form-line .form-input {
+  width: 50%;
+  box-sizing: border-box;
+  float: right;
+}
+
+.form-line .form-input input[type="color"],
+.form-line .form-input input[type="text"],
+.form-line .form-input select {
+  width: 100%;
+  box-sizing: border-box;
+}

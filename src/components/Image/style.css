@@ -1,0 +1,28 @@
+.grid-item {
+  width: 150px;
+  position: relative;
+  padding: 20px;
+  justify-self: center;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.grid-item .icons-block {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  opacity: 0;
+  transition: opacity 0.5s 0.5s;
+}
+
+.icons-block img {
+  width: 14px;
+  margin-left: 4px;
+}
+
+.grid-item:hover .icons-block {
+  display: block;
+  cursor: pointer;
+  opacity: 1;
+}
