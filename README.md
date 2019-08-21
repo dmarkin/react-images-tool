@@ -13,3 +13,6 @@ the one image + tooltip on hover;
 5) a "remove image" feature
 6) server interaction emulation: all requests/responses have to be stubbed. It is possible to
 unstub and change to real back-end.
+
+For quick start run next at the terminal:
+`npm ci && start`
