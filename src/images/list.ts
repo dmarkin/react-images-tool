@@ -1,4 +1,4 @@
-import { ImageItem } from '../interfaces/image';
+import { ImageItem } from 'interfaces/image';
 
 export const initialList: ImageItem[] = [
   {

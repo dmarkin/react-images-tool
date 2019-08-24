@@ -1,6 +1,6 @@
-import { ImageItem, Positions } from '../interfaces/image';
-import { initialList } from '../images/list';
-import { DEFAULT_COLOR, DEFAULT_POSITION, UPLOAD_API_KEY } from '../constants/defaults';
+import { ImageItem, Positions } from 'interfaces/image';
+import { initialList } from 'images/list';
+import { DEFAULT_COLOR, DEFAULT_POSITION, UPLOAD_API_KEY } from 'constants/defaults';
 import * as filestack from 'filestack-js';
 
 const client = filestack.init(UPLOAD_API_KEY);

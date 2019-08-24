@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ImageItem, Positions } from '../../interfaces/image';
+import { ImageItem, Positions } from 'interfaces/image';
 import './style.css';
-import { DEFAULT_COLOR, DEFAULT_POSITION, DEFAULT_TEXT } from '../../constants/defaults';
-import FormLine from '../FormLine';
-import Loader from '../Loader';
-import AddImage from '../AddImage';
+import { DEFAULT_COLOR, DEFAULT_POSITION, DEFAULT_TEXT } from 'constants/defaults';
+import FormLine from 'components/FormLine';
+import Loader from 'components/Loader';
+import AddImage from 'components/AddImage';
 
 export interface ImageWithTooltipEditorProps {
   record: ImageItem,
@@ -52,35 +52,37 @@ const ImageWithTooltipEditor: React.FunctionComponent<ImageWithTooltipEditorProp
 
   return (
     <form onSubmit={() => updateRecord(record)}>
+      <div className="modal-header">{record && record.src ? `Edit Image ${record.name}` : 'Upload Image'}</div>
       {record.src ?
         <React.Fragment>
-          <h4>Image name {record.name}</h4>
           <img src={record.src} alt={record.altText} width="300px"/>
         </React.Fragment> :
         <React.Fragment>
           {isLoading ? <Loader/> : <AddImage createRecord={createRecord}/>}
         </React.Fragment>}
       {record.src && <React.Fragment>
-        <FormLine label={<label htmlFor="tooltipColor">Tooltip Color</label>}
-                  input={<input id="tooltipColor" type="color" value={color} required
-                                onChange={e => changeColor(e)}/>}/>
-        <FormLine label={<label htmlFor="tooltipText">Tooltip Text</label>}
-                  input={<input id="tooltipText" type="text" value={text} required
-                                onChange={e => changeText(e)}/>}/>
-        <FormLine label={<label htmlFor="tooltipPosition">Tooltip Position</label>}
-                  input={<select id="tooltipPosition" value={position}
-                                 onChange={e => changePosition(e)}>
-                    <option value='top'>Top</option>
-                    <option value='right'>Right</option>
-                    <option value='bottom'>Bottom</option>
-                    <option value='left'>Left</option>
-                  </select>}/>
+          <FormLine label={<label htmlFor="tooltipText">Tooltip Text</label>}
+                    input={<input id="tooltipText" type="text" value={text} autoFocus required
+                                  onChange={e => changeText(e)}/>}/>
+          <FormLine label={<label htmlFor="tooltipColor">Tooltip Color</label>}
+                    input={<input id="tooltipColor" type="color" value={color} required
+                                  onChange={e => changeColor(e)}/>}/>
+          <FormLine label={<label htmlFor="tooltipPosition">Tooltip Position</label>}
+                    input={<select id="tooltipPosition" value={position}
+                                   onChange={e => changePosition(e)}>
+                      <option value='top'>Top</option>
+                      <option value='right'>Right</option>
+                      <option value='bottom'>Bottom</option>
+                      <option value='left'>Left</option>
+                    </select>}/>
+      </React.Fragment>}
 
+      <div className="modal-footer">
         <div className="form-line btn-block">
-          <input type="submit" className="material-btn" value="Save"/>
+          {record.src && <input type="submit" className="material-btn" value="Save"/>}
           <input type="reset" className="material-btn" value="Cancel" onClick={cancelEdit}/>
         </div>
-      </React.Fragment>}
+      </div>
     </form>);
 };
 

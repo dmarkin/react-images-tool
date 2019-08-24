@@ -1,8 +1,5 @@
-import {
-  ImagesState,
-  ImagesActionTypes, ImageItem,
-} from '../../interfaces/image';
-import { ImagesActions as ACTIONS } from '../../interfaces/actions';
+import { ImagesState, ImagesActionTypes, ImageItem } from 'interfaces/image';
+import { ImagesActions as ACTIONS } from 'interfaces/actions';
 
 const initialState: ImagesState = {
   isLoading: false,

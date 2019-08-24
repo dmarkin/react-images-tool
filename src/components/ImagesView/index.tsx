@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Modal from 'react-awesome-modal';
-import Image from '../Image';
-import { ImageItem } from '../../interfaces/image';
-import ImageWithTooltipEditor from '../ImageWithTooltipEditor';
-import { ImageAction } from '../ImagesContainer/actions';
-import { DEFAULT_COLOR, DEFAULT_POSITION, DEFAULT_TEXT } from '../../constants/defaults';
+import Image from 'components/Image';
+import ImageWithTooltipEditor from 'components/ImageWithTooltipEditor';
+import { ImageAction } from 'components/ImagesContainer/actions';
+import { ImageItem } from 'interfaces/image';
+import { DEFAULT_COLOR, DEFAULT_POSITION, DEFAULT_TEXT } from 'constants/defaults';
 import './style.css';
 
 export interface ImagesViewProps {

@@ -1,10 +1,8 @@
 import { Dispatch } from 'redux';
-import storage from '../../services/StorageService';
-import {
-  ImageItem,
-} from '../../interfaces/image';
-import { ImagesActions as ACTIONS } from '../../interfaces/actions';
-import { AppState } from '../../reducers/rootReducer';
+import storage from 'services/StorageService';
+import { ImageItem } from 'interfaces/image';
+import { ImagesActions as ACTIONS } from 'interfaces/actions';
+import { AppState } from 'reducers/rootReducer';
 
 export class ImageAction {
   static getList = () => {

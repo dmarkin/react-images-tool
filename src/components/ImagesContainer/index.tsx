@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import ImagesView from '../ImagesView';
-import { AppState } from '../../reducers/rootReducer';
+import ImagesView from 'components/ImagesView';
+import { AppState } from 'reducers/rootReducer';
 import { ImageAction } from './actions';
-import { ImageItem } from '../../interfaces/image';
+import { ImageItem } from 'interfaces/image';
 
 export interface ImagesContainerProps {
   list: ImageItem[],

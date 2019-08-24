@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ImageItem } from '../../interfaces/image';
-import Tooltip from '../Tooltip';
+import { ImageItem } from 'interfaces/image';
+import Tooltip from 'components/Tooltip';
 import './style.css';
 
 export interface ImageProps {
