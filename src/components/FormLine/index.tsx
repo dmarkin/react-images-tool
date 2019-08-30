@@ -2,8 +2,8 @@ import * as React from 'react';
 import './style.css';
 
 export interface FormLineProps {
-  label: React.ReactNode,
-  input: React.ReactNode
+  label: React.ReactElement,
+  input: React.ReactElement
 }
 
 const FormLine: React.FunctionComponent<FormLineProps> = (props) => {
