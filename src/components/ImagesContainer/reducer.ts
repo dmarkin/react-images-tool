@@ -98,7 +98,7 @@ export function imagesReducer(state = initialState, action: ImagesActionTypes): 
 
       return {
         ...state,
-        ...images,
+        images,
         isLoading: false,
       };
     }

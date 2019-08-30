@@ -2,6 +2,7 @@ import * as React from 'react';
 import Modal from 'react-awesome-modal';
 import Image from 'components/Image';
 import ImageWithTooltipEditor from 'components/ImageWithTooltipEditor';
+import RemoveDialog from 'components/RemoveDialog';
 import { ImageAction } from 'components/ImagesContainer/actions';
 import { ImageItem } from 'interfaces/image';
 import { DEFAULT_COLOR, DEFAULT_POSITION, DEFAULT_TEXT } from 'constants/defaults';
@@ -18,6 +19,7 @@ export interface ImagesViewProps {
 const ImagesView: React.FunctionComponent<ImagesViewProps> = (props) => {
   const [visible, setVisible] = React.useState(false);
   const [activeRecord, setActive] = React.useState<ImageItem | null>(null);
+  const [recordToRemove, setRecordToRemove] = React.useState<ImageItem | null>(null);
   const newRecord = {
     tooltip: {
       text: DEFAULT_TEXT,
@@ -28,6 +30,8 @@ const ImagesView: React.FunctionComponent<ImagesViewProps> = (props) => {
 
   const removeItem = (item: ImageItem): void => {
     props.removeRecord(item);
+    setVisible(false);
+    setRecordToRemove(null);
   };
 
   const saveItem = (item: ImageItem): void => {
@@ -48,11 +52,12 @@ const ImagesView: React.FunctionComponent<ImagesViewProps> = (props) => {
       }}>Add Image
       </button>
       <div className="grid-container">
-        {props.list.map((item: ImageItem): React.ReactNode => (
+        {props.list.map((item: ImageItem): React.ReactElement => (
           <Image key={item.id}
                  item={item}
                  remove={(): void => {
-                   removeItem(item);
+                   setRecordToRemove(item);
+                   setVisible(true);
                  }}
                  setActive={(): void => {
                    setActive(item);
@@ -64,12 +69,23 @@ const ImagesView: React.FunctionComponent<ImagesViewProps> = (props) => {
              effect="fadeInUp"
              onClickAway={(): void => setVisible(false)}>
         <div>
-          {activeRecord &&
+          {activeRecord && !recordToRemove &&
           <ImageWithTooltipEditor record={activeRecord}
                                   isLoading={props.isLoading}
                                   createRecord={createItem}
                                   saveRecord={saveItem}
-                                  cancelEdit={(): void => setVisible(false)}/>}
+                                  cancelEdit={(): void => {
+                                    setVisible(false);
+                                    setActive(null);
+                                  }}/>}
+
+          {!activeRecord && recordToRemove &&
+          <RemoveDialog record={recordToRemove}
+                        removeItem={removeItem}
+                        cancel={(): void => {
+                          setVisible(false);
+                          setRecordToRemove(null);
+                        }}/>}
         </div>
       </Modal>
     </React.Fragment>
